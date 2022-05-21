@@ -1,0 +1,129 @@
+@font-face {
+    font-family: "Codec";
+    font-weight: 600;
+    font-style: normal;
+    font-display: auto;
+    src: local("Codec"),
+    url("../assets/fonts/Codec-Cold-ExtraBold-trial.ttf") format("truetype");
+}
+
+
+@font-face {
+    font-family: "Codec";
+    font-weight: 500;
+    font-style: normal;
+    font-display: auto;
+    src: local("Codec"),
+    url("../assets/fonts/Codec-Cold-Bold-trial.ttf") format("truetype");
+}
+
+@font-face {
+    font-family: "Codec";
+    font-weight: 300;
+    font-style: normal;
+    font-display: auto;
+    src: local("Codec"),
+    url("../assets/fonts/Codec-Cold-Regular-trial.ttf") format("truetype");
+}
+
+#app {
+    font-family: "Codec", serif;
+    font-weight: 300;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-align: center;
+    color: black;
+}
+
+body{
+    margin: 0;
+}
+
+.header{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 50px;
+    background: black;
+    color: white;
+}
+
+h1,h2,h3,h4,h5{
+    margin: 0;
+}
+
+input{
+    border-radius: 0;
+    border: 2px solid black;
+    padding: 10px 15px;
+    width: 240px;
+}
+
+button{
+    background: black;
+    color: white;
+    padding: 2px 30px;
+    font-weight: 600;
+}
+
+form .form-group{
+    margin-bottom: 30px;
+}
+
+::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
+    font-weight: 500;
+    font-family: "Codec", serif;
+    color: #aaa;
+    opacity: 1; /* Firefox */
+}
+
+:-ms-input-placeholder { /* Internet Explorer 10-11 */
+    font-weight: 500;
+    color: #aaa;
+}
+
+::-ms-input-placeholder { /* Microsoft Edge */
+    font-weight: 500;
+    color: #aaa;
+}
+
+.page-section{
+    margin-top: 100px;
+}
+
+/* Login */
+.login-page .page-section h1{
+    letter-spacing: -2px;
+    margin-bottom: 10px;
+}
+
+.login-page .page-section h3{
+    font-weight: 500;
+}
+
+.login-page .page-section .login-form{
+    margin-top: 30px;
+}
+
+.login-page .page-section label{
+    text-transform: capitalize;
+    font-weight: bold;
+    margin-bottom: 5px;
+    display:block;
+}
+
+.login-page .footer-section{
+    background: black;
+    margin-top: 150px;
+    position: relative;
+    height: 150px;
+}
+
+.login-page .footer-section img{
+    position: absolute;
+    left: 50%;
+    bottom: 0;
+    width: 300px;
+    transform: translate(-50%, -50px);
+}
+
