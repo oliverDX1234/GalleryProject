@@ -1,0 +1,8 @@
+@media( max-width: 575px ){
+    .login-page .footer-section{
+        height: 100px;
+    }
+    .login-page .footer-section img{
+        width: 200px;
+    }
+}

@@ -4,7 +4,7 @@
     font-style: normal;
     font-display: auto;
     src: local("Codec"),
-    url("../assets/fonts/Codec-Cold-ExtraBold-trial.ttf") format("truetype");
+    url("../../assets/fonts/Codec-Cold-ExtraBold-trial.ttf") format("truetype");
 }
 
 
@@ -14,7 +14,7 @@
     font-style: normal;
     font-display: auto;
     src: local("Codec"),
-    url("../assets/fonts/Codec-Cold-Bold-trial.ttf") format("truetype");
+    url("../../assets/fonts/Codec-Cold-Bold-trial.ttf") format("truetype");
 }
 
 @font-face {
@@ -23,11 +23,11 @@
     font-style: normal;
     font-display: auto;
     src: local("Codec"),
-    url("../assets/fonts/Codec-Cold-Regular-trial.ttf") format("truetype");
+    url("../../assets/fonts/Codec-Cold-Regular-trial.ttf") format("truetype");
 }
 
 #app {
-    font-family: "Codec", serif;
+    font-family: Arial, serif;
     font-weight: 300;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
@@ -68,6 +68,12 @@ button{
 
 form .form-group{
     margin-bottom: 30px;
+}
+
+.validation{
+    color: red;
+    font-size: 12px;
+    font-weight: 500;
 }
 
 ::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
