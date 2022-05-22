@@ -1,8 +1,53 @@
+
+@media( min-width: 1200px ){
+    .page-container{
+        width: 1140px;
+    }
+}
+
+@media( min-width: 992px ) and ( max-width: 1199px ){
+    .page-container{
+        width: 960px;
+    }
+}
+
+@media( min-width: 768px ) and ( max-width: 991px ){
+    .page-container{
+        width: 720px;
+    }
+}
+
+@media( min-width: 576px ) and ( max-width: 767px ){
+    .page-container{
+        width: 540px
+    }
+}
+
+
 @media( max-width: 575px ){
     .login-page .footer-section{
         height: 100px;
     }
     .login-page .footer-section img{
         width: 200px;
+    }
+    .page-container{
+        width: 100%;
+    }
+
+    .header-logo{
+        font-size: 23px;
+    }
+
+    .albums-header-button{
+        font-size: 11px;
+        padding: 5px 10px;
+        right: 10px;
+    }
+
+    .logout-header-button{
+        font-size: 11px;
+        padding: 5px 10px;
+        right: 10px;
     }
 }

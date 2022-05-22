@@ -40,12 +40,15 @@ body{
 }
 
 .header{
-    display: flex;
-    justify-content: center;
-    align-items: center;
     height: 50px;
     background: black;
     color: white;
+}
+
+.align-vertical{
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 h1,h2,h3,h4,h5{
@@ -64,6 +67,7 @@ button{
     color: white;
     padding: 2px 30px;
     font-weight: 600;
+    cursor: pointer;
 }
 
 form .form-group{
@@ -72,8 +76,31 @@ form .form-group{
 
 .validation{
     color: red;
-    font-size: 12px;
+    font-size: 15px;
+    margin-top: 10px;
     font-weight: 500;
+}
+
+.page-container{
+    margin-right: auto;
+    margin-left: auto;
+    height: 100%;
+}
+
+.mt-1{
+    margin-top: 5px;
+}
+.mt-2{
+    margin-top: 10px;
+}
+.mt-3{
+    margin-top: 15px;
+}
+.mt-4{
+    margin-top: 20px;
+}
+.mt-5{
+    margin-top: 30px;
 }
 
 ::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
@@ -95,6 +122,39 @@ form .form-group{
 
 .page-section{
     margin-top: 100px;
+}
+
+.albums-header-button{
+    position: absolute;
+    right: 0;
+    border: 1px solid white;
+    padding: 5px 20px;
+}
+.logout-header-button{
+    position: absolute;
+    left: 0;
+    border: 1px solid white;
+    padding: 5px 20px;
+}
+
+
+.relative{
+    position: relative;
+}
+
+.layout{
+    -moz-column-width: 15em;
+    -webkit-column-width: 15em;
+    -moz-column-gap: 1em;
+    -webkit-column-gap: 1em;
+}
+
+.layout img{
+    display: inline-block;
+    margin: 0.25rem;
+    padding: 1rem;
+    width: 100%;
+    background: white;
 }
 
 /* Login */

@@ -8,18 +8,20 @@
         <div class="form-group">
           <label for="username">USERNAME</label>
           <div class="form-input">
-            <input v-model="username" type="text" id="username" placeholder="Enter username here...">
+            <input v-model="username" @input="errorMsg = null" type="text" id="username" placeholder="Enter username here...">
             <p class="validation" v-show="!validForm && !isValidUsername">The username field is required</p>
           </div>
         </div>
 
         <div class="form-group">
           <label for="password">PASSWORD</label>
-          <input v-model="password" type="text" id="password" placeholder="Enter password here...">
+          <input v-model="password" @input="errorMsg = null" type="text" id="password" placeholder="Enter password here...">
           <p class="validation" v-show="!validForm && !isValidPassword">The password field is required and has to be at least 7 characters</p>
         </div>
 
         <button>LOG IN</button>
+
+        <p class="validation mt-3" v-show="errorMsg">The provided credentials are incorrect. Please try again</p>
 
         <div class="footer-section">
           <img src="../assets/images/login.svg" alt="">
@@ -30,7 +32,7 @@
 </template>
 
 <script>
-
+import {mapActions} from "vuex";
 export default {
   name: "LoginPage",
   data() {
@@ -38,6 +40,7 @@ export default {
       username: null,
       password: null,
       validForm: true,
+      errorMsg: null
     }
   },
   computed:{
@@ -50,7 +53,10 @@ export default {
     }
   },
   methods: {
-    login(event) {
+    ...mapActions("authentication", {
+      loginUser: "loginUser"
+    }),
+    async login(event) {
       event.preventDefault();
 
       //Validate form fakeDatabase
@@ -59,7 +65,15 @@ export default {
         return;
       }
 
-      alert("");
+      try{
+        await this.loginUser({username: this.username, password: this.password});
+
+        await this.$router.push({name: 'gallery'})
+
+      }catch(error){
+        this.errorMsg = error;
+      }
+
     }
   }
 }
