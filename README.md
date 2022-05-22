@@ -1,4 +1,4 @@
-# valtech-project
+# gallery-project
 
 ## Project setup
 ```
