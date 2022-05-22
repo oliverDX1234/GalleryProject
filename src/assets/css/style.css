@@ -81,9 +81,14 @@ form .form-group{
     font-weight: 500;
 }
 
+.hide{
+    display: none;
+}
+
 .page-container{
     margin-right: auto;
     margin-left: auto;
+    margin-bottom: 50px;
     height: 100%;
 }
 
@@ -119,7 +124,6 @@ form .form-group{
     font-weight: 500;
     color: #aaa;
 }
-
 .page-section{
     margin-top: 100px;
 }
@@ -142,19 +146,12 @@ form .form-group{
     position: relative;
 }
 
-.layout{
-    -moz-column-width: 15em;
-    -webkit-column-width: 15em;
-    -moz-column-gap: 1em;
-    -webkit-column-gap: 1em;
+.on-top{
+    z-index: 9999;
 }
 
-.layout img{
-    display: inline-block;
-    margin: 0.25rem;
-    padding: 1rem;
-    width: 100%;
-    background: white;
+.pointer{
+    cursor: pointer;
 }
 
 /* Login */
@@ -191,5 +188,75 @@ form .form-group{
     bottom: 0;
     width: 300px;
     transform: translate(-50%, -50px);
+}
+
+/*Gallery*/
+
+.layout{
+    -moz-column-width: 15em;
+    -webkit-column-width: 15em;
+    -moz-column-gap: 1em;
+    -webkit-column-gap: 1em;
+}
+
+.layout img{
+    display: inline-block;
+    margin: 0.25rem;
+    padding: 1rem;
+    width: 100%;
+    background: white;
+}
+
+
+.layout button{
+    width: 100%;
+    position: absolute;
+    padding: 10px 0;
+    left: 20px;
+    bottom: 20px;
+}
+
+
+.overlay {
+    left: 0;
+    top: 0;
+    z-index: 9999;
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    background: RGB(0,0,0, 0.7);
+}
+
+.overlay__inner {
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+}
+
+.overlay__content {
+    left: 50%;
+    position: absolute;
+    top: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.spinner {
+    width: 75px;
+    height: 75px;
+    display: inline-block;
+    border-width: 2px;
+    border-color: rgba(255, 255, 255, 0.05);
+    border-top-color: #fff;
+    animation: spin 1s infinite linear;
+    border-radius: 100%;
+    border-style: solid;
+}
+
+@keyframes spin {
+    100% {
+        transform: rotate(360deg);
+    }
 }
 

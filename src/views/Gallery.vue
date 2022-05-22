@@ -1,10 +1,20 @@
 <template>
   <div>
+    <div v-if="loading" class="overlay">
+      <div class="overlay__inner">
+        <div class="overlay__content"><span class="spinner"></span></div>
+      </div>
+    </div>
     <div class="page-container">
 
       <div class="layout">
-        <img v-for="(value, index) in photos" :key="index" :src="value" alt="">
+        <div @click="viewDetailedPage(index)" @mouseenter="mouseEntered(index)" @mouseleave="mouseLeave(index)" class="relative" v-for="(value, index) in photos" :key="index">
+          <img class="pointer" :src="value.url" alt="">
+          <button class="hide" :ref="'img_' + index">ADD TO ALBUM</button>
+        </div>
       </div>
+
+      <button @click="getPhotos" class="mt-5">LOAD MORE</button>
 
     </div>
   </div>
@@ -15,16 +25,29 @@ export default {
   data() {
 
     return {
-      photos: []
+      photos: [],
+      loading: false
     }
   },
   methods: {
     async getPhotos() {
+      this.loading = true;
       let photos = await (await fetch("https://picsum.photos/v2/list?limit=30")).json();
-      photos.forEach( async x => {
+      photos.forEach( async (x, idx, array) => {
         let baseurl = await this.getBase64Image(x.download_url);
-        this.photos.push(baseurl);
+        this.photos.push({
+          author: x.author,
+          download_url: x.download_url,
+          url: baseurl
+        });
+
+        if(idx === array.length - 1){
+          setTimeout(() => {
+            this.loading = false;
+          }, 1000)
+        }
       })
+
     },
     getBase64Image(url){
       return new Promise((resolve) => {
@@ -57,10 +80,38 @@ export default {
           resolve(canvas.toDataURL('image/jpeg', 0.7))
         }
       });
+    },
+
+    mouseEntered(index){
+      this.$refs["img_" + index][0].classList.remove("hide")
+    },
+
+    mouseLeave(index){
+      this.$refs["img_" + index][0].classList.add("hide")
+    },
+
+    viewDetailedPage(){
+      // let selected = null;
+      //
+      // let index = this.photos.findIndex((x, idx) => i === idx);
+      //
+      // if(index !== -1){
+      //   selected = this.photos[index];
+      // }
+      //
+      // if(selected){
+      //
+      // }
     }
   },
   mounted() {
     this.getPhotos();
+
+    window.onscroll = () => {
+      if ((window.innerHeight + window.scrollY - 50) >= document.body.offsetHeight) {
+        this.getPhotos();
+      }
+    };
   }
 }
 </script>
