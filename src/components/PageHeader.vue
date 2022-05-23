@@ -3,6 +3,7 @@
     <div class="header relative on-top">
       <div class="page-container align-vertical relative">
         <h1 class="header-logo">valstock</h1>
+
         <button v-if="isAuthenticated" class="albums-header-button">MY ALBUMS</button>
         <button v-if="isAuthenticated" @click="logout" class="logout-header-button">LOGOUT</button>
       </div>

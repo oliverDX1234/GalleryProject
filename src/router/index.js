@@ -7,9 +7,20 @@ const routes = [
     name: 'gallery',
     component: () => import('../views/Gallery.vue'),
     meta:{
+
       auth: true
     }
   },
+
+  {
+    path: '/details-page/:id',
+    name: 'details-page',
+    component: () => import('../views/DetailsPage.vue'),
+    meta:{
+      auth: true
+    }
+  },
+
   {
     path: '/login',
     name: 'login',
@@ -29,6 +40,8 @@ const router = createRouter({
 })
 
 router.beforeEach((to, _ ,next) => {
+
+
   if(to.meta.auth && !store.getters['authentication/isAuthenticated']){
     next("/login");
   }else if(!to.meta.auth && store.getters['authentication/isAuthenticated']){

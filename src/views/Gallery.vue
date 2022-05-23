@@ -8,10 +8,14 @@
     <div class="page-container">
 
       <div class="layout">
-        <div @click="viewDetailedPage(index)" @mouseenter="mouseEntered(index)" @mouseleave="mouseLeave(index)" class="relative" v-for="(value, index) in photos" :key="index">
-          <img class="pointer" :src="value.url" alt="">
-          <button class="hide" :ref="'img_' + index">ADD TO ALBUM</button>
-        </div>
+        <LayoutItem
+            @mouseenter="mouseEntered(index)"
+            @mouseleave="mouseLeave(index)"
+            :ref="'item-' + index" :key="index"
+            v-for="(value, index) in photos"
+            :photo="value" :index="index"
+
+        />
       </div>
 
       <button @click="getPhotos" class="mt-5">LOAD MORE</button>
@@ -20,8 +24,11 @@
   </div>
 </template>
 <script>
+import LayoutItem from "@/components/LayoutItem";
+
 export default {
   name: "GalleryPage",
+  components: {LayoutItem},
   data() {
 
     return {
@@ -33,7 +40,7 @@ export default {
     async getPhotos() {
       this.loading = true;
       let photos = await (await fetch("https://picsum.photos/v2/list?limit=30")).json();
-      photos.forEach( async (x, idx, array) => {
+      photos.forEach(async (x, idx, array) => {
         let baseurl = await this.getBase64Image(x.download_url);
         this.photos.push({
           author: x.author,
@@ -41,7 +48,7 @@ export default {
           url: baseurl
         });
 
-        if(idx === array.length - 1){
+        if (idx === array.length - 1) {
           setTimeout(() => {
             this.loading = false;
           }, 1000)
@@ -49,7 +56,7 @@ export default {
       })
 
     },
-    getBase64Image(url){
+    getBase64Image(url) {
       return new Promise((resolve) => {
         const img = new Image();
         img.setAttribute('crossOrigin', 'anonymous');
@@ -82,33 +89,19 @@ export default {
       });
     },
 
-    mouseEntered(index){
-      this.$refs["img_" + index][0].classList.remove("hide")
+    mouseEntered(index) {
+      this.$refs['item-' + index][0].visible = true;
     },
 
-    mouseLeave(index){
-      this.$refs["img_" + index][0].classList.add("hide")
+    mouseLeave(index) {
+      this.$refs['item-' + index][0].visible = false;
     },
-
-    viewDetailedPage(){
-      // let selected = null;
-      //
-      // let index = this.photos.findIndex((x, idx) => i === idx);
-      //
-      // if(index !== -1){
-      //   selected = this.photos[index];
-      // }
-      //
-      // if(selected){
-      //
-      // }
-    }
   },
   mounted() {
     this.getPhotos();
 
     window.onscroll = () => {
-      if ((window.innerHeight + window.scrollY - 50) >= document.body.offsetHeight) {
+      if ((window.innerHeight + window.scrollY) >= document.body.offsetHeight) {
         this.getPhotos();
       }
     };
@@ -116,6 +109,3 @@ export default {
 }
 </script>
 
-<style scoped>
-
-</style>

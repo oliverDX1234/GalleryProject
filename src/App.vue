@@ -7,7 +7,7 @@
 </template>
 
 <script>
-import PageHeader from "@/views/PageHeader";
+import PageHeader from "@/components/PageHeader";
 
 export default {
   components: {
