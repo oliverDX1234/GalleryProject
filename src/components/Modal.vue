@@ -20,6 +20,7 @@
           </div>
           <div v-else>
             <select v-model="selected">
+              <option value="Select an album" disabled>Select an album...</option>
               <option v-for="album in albums" :key="album.name" :value="album.name">{{ album.name }}</option>
             </select>
           </div>
@@ -57,7 +58,7 @@ export default {
   data() {
     return {
       activeTab: 1,
-      selected: null,
+      selected: "Select an album",
       albumTitle: null,
       errorMsg: null
     }
