@@ -194,8 +194,16 @@ form .form-group{
     position: absolute;
     right: 0;
     border: 1px solid white;
+    background: black;
+    color: white;
+    font-weight: 700;
     padding: 5px 20px;
+    text-align: center;
+    -webkit-appearance: none;
+    -moz-appearance: none;
 }
+
+
 .logout-header-button{
     position: absolute;
     left: 0;

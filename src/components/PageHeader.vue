@@ -4,7 +4,10 @@
       <div class="page-container align-vertical relative">
         <h1 class="header-logo">valstock</h1>
 
-        <button v-if="isAuthenticated" class="albums-header-button">MY ALBUMS</button>
+        <select v-model="album" v-if="isAuthenticated" class="albums-header-button">
+          <option disabled>MY ALBUMS</option>
+          <option v-for="album in albums" :key="album.name" :value="album.name">{{ album.name }}</option>
+        </select>
         <button v-if="isAuthenticated" @click="logout" class="logout-header-button">LOGOUT</button>
       </div>
     </div>
@@ -15,7 +18,13 @@ import {mapActions, mapGetters} from  "vuex";
 export default {
   name: 'page-header',
   computed:{
-    ...mapGetters("authentication", {isAuthenticated: "isAuthenticated"})
+    ...mapGetters("authentication", {isAuthenticated: "isAuthenticated"}),
+    ...mapGetters("gallery", {albums: "allAlbums"})
+  },
+  data(){
+    return {
+      album: "MY ALBUMS"
+    }
   },
   methods:{
     ...mapActions("authentication", {logoutUser: "logoutUser"}),
