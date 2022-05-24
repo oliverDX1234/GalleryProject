@@ -8,6 +8,6 @@ cd dist
 
 git init
 git add -A
-git commit -m 'deploy'
+git commit -m 'Deploy'
 git push -f git@github.com:oliverDX1234/GalleryProject.git master:gh-pages
 cd -
