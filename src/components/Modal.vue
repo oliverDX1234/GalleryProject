@@ -68,11 +68,18 @@ export default {
     ...mapActions({show: "show"}),
 
     newTab(value) {
+      this.errorMsg = null;
       this.activeTab = value
     },
     saveAlbum() {
 
       if (this.activeTab === 1) {
+
+        if(this.albumTitle === null){
+          this.errorMsg = "Please enter an album name"
+          return;
+        }
+
         try {
           this.addNewAlbum({
             name: this.albumTitle,
@@ -90,6 +97,11 @@ export default {
 
         this.albumTitle = null;
       }else{
+        if(this.selected === "Select an album"){
+
+          this.errorMsg = "Please select item in dropdown";
+          return;
+        }
         this.addInAlbum({
           name: this.selected,
           item: this.item

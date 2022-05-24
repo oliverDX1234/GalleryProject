@@ -15,7 +15,7 @@
 
         <div class="form-group">
           <label for="password">PASSWORD</label>
-          <input v-model="password" @input="errorMsg = null" type="text" id="password" placeholder="Enter password here...">
+          <input v-model="password" @input="errorMsg = null" type="password" id="password" placeholder="Enter password here...">
           <p class="validation" v-show="!validForm && !isValidPassword">The password field is required and has to be at least 7 characters</p>
         </div>
 
@@ -37,8 +37,8 @@ export default {
   name: "LoginPage",
   data() {
     return {
-      username: null,
-      password: null,
+      username: "user1",
+      password: "pass1234567",
       validForm: true,
       errorMsg: null
     }
