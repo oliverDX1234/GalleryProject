@@ -4,7 +4,7 @@ import store from "../store"
 const routes = [
   {
     path: '/',
-    name: 'gallery',
+    name: 'homepage',
     component: () => import('../views/Gallery.vue'),
     meta:{
 
@@ -58,7 +58,7 @@ const router = createRouter({
 })
 
 router.beforeEach((to, _ ,next) => {
-
+console.log(to, _, next);
 
   if(to.meta.auth && !store.getters['authentication/isAuthenticated']){
     next("/login");
