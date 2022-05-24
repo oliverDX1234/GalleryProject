@@ -3,6 +3,15 @@ import store from "../store"
 
 const routes = [
   {
+    path: '/',
+    name: 'gallery',
+    component: () => import('../views/Gallery.vue'),
+    meta:{
+
+      auth: true
+    }
+  },
+  {
     path: '/gallery',
     name: 'gallery',
     component: () => import('../views/Gallery.vue'),
