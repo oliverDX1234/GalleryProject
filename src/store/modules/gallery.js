@@ -29,7 +29,9 @@ export default {
 
             let album = {
                 name: payload.name,
-                items: [payload.item]
+                id: payload.id,
+                items: [payload.item],
+                upload_date: payload.upload_date
             }
 
             context.commit("ADD_NEW_ALBUM", album);
@@ -38,6 +40,10 @@ export default {
         addInAlbum(context, payload){
 
             context.commit("ADD_IN_ALBUM", payload);
+        },
+
+        deleteItem(context, payload){
+            context.commit("DELETE_ITEM", payload);
         }
     },
 
@@ -57,6 +63,27 @@ export default {
 
             if(index !== -1){
                 state.albums[index].items.push(payload.item);
+
+                localStorage.removeItem("albums");
+                localStorage.setItem("albums", JSON.stringify(state.albums));
+            }else{
+                throw new Error("There was an error");
+            }
+        },
+
+        DELETE_ITEM(state, payload){
+            let index = state.albums.findIndex(x => x.id === Number(payload.in));
+
+            if(index !== -1){
+                let itemIndex = state.albums[index].items.findIndex( item => item.id === payload.item.id)
+
+                if(itemIndex !== -1){
+                    state.albums[index].items.splice(itemIndex, 1);
+
+                    localStorage.removeItem("albums");
+                    localStorage.setItem("albums", JSON.stringify(state.albums));
+                }
+
             }else{
                 throw new Error("There was an error");
             }

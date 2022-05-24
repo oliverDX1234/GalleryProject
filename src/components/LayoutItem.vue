@@ -2,19 +2,23 @@
   <div class="relative"
        >
     <img @click="showDetailedPage" class="pointer" :src="photo.url" alt="">
-    <button class="add-to-album" @click="showModal" v-if="visible">ADD TO ALBUM</button>
+    <button class="add-to-album" @click="showModal" v-if="$route.name === 'gallery' && visible">ADD TO ALBUM</button>
+    <button class="add-to-album" @click="showModal" v-if="$route.name !== 'gallery' && visible">DELETE ITEM</button>
 
-    <modal @close="modalIsVisible = false" :visible="modalIsVisible" :item="photo"></modal>
+    <modal v-if="$route.name === 'gallery'" @close="modalIsVisible = false" :visible="modalIsVisible" :item="photo"></modal>
+    <delete-modal v-if="$route.name !== 'gallery'" @close="modalIsVisible = false" :visible="modalIsVisible" :item="photo"></delete-modal>
   </div>
 </template>
 <script>
 import {mapActions} from "vuex";
 import Modal from "@/components/Modal";
+import DeleteModal from "@/components/DeleteModal";
 
 export default {
   name: 'LayoutItem',
   components:{
-    Modal
+    Modal,
+    DeleteModal
   },
   data(){
     return {

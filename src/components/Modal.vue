@@ -27,7 +27,6 @@
           </div>
 
           <div v-if="errorMsg" class="validation mt-5">{{ errorMsg }}</div>
-
           <div class="flex justify-content-center">
             <div class="mt-5">
               <button @click="$emit('close')" class="button-line min-width-150">CANCEL</button>
@@ -66,6 +65,7 @@ export default {
   },
   methods: {
     ...mapActions("gallery", {addNewAlbum: "addNewAlbum", addInAlbum: "addInAlbum"}),
+    ...mapActions({show: "show"}),
 
     newTab(value) {
       this.activeTab = value
@@ -76,8 +76,12 @@ export default {
         try {
           this.addNewAlbum({
             name: this.albumTitle,
-            item: this.item
+            item: this.item,
+            id: this.albums.length + 1,
+            upload_date: new Date()
           });
+
+          this.show();
         } catch (error) {
           this.errorMsg = error.message;
           this.albumTitle = null;
@@ -90,6 +94,8 @@ export default {
           name: this.selected,
           item: this.item
         });
+
+        this.show();
       }
 
       this.$emit("close");

@@ -190,6 +190,30 @@ form .form-group{
     margin-top: 80px;
 }
 
+.alert{
+    position: fixed;
+    bottom: 0;
+    text-align: center;
+    width: 100%;
+    padding: 50px 0;
+    background: black;
+    color: white;
+    font-size: 17px;
+}
+
+
+
+
+.v-enter-active,
+.v-leave-active {
+    transition: opacity 0.5s ease;
+}
+
+.v-enter-from,
+.v-leave-to {
+    opacity: 0;
+}
+
 .albums-header-button{
     position: absolute;
     right: 0;
@@ -348,6 +372,30 @@ select{
     color: grey;
 }
 
+.layout-list-photos{
+    -moz-column-width: 21em;
+    -webkit-column-width: 21em;
+    -moz-column-gap: 1em;
+    -webkit-column-gap: 1em;
+}
+
+.layout-list-photos img{
+    display: inline-block;
+    margin: 0.25rem;
+    padding: 1rem;
+    width: 100%;
+    background: white;
+}
+
+
+.download{
+    background: black;
+    color: white;
+    font-weight: 700;
+    padding: 5px 20px;
+    text-align: center;
+    -webkit-appearance: none;
+}
 
 /*Modal*/
 
@@ -367,10 +415,10 @@ select{
 .modal-content {
     background-color: #fefefe;
     margin: 15% auto; /* 15% from the top and centered */
-    padding: 20px;
+    padding: 20px 20px 100px 20px;
     border: 1px solid #888;
     width: 500px;
-    height:300px;/* Could be more or less, depending on screen size */
+    height: auto; /* Could be more or less, depending on screen size */
 }
 
 .modal-body{

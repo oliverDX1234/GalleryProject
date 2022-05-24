@@ -22,6 +22,15 @@ const routes = [
   },
 
   {
+    path: '/album/:id',
+    name: 'album',
+    component: () => import('../views/Album.vue'),
+    meta:{
+      auth: true
+    }
+  },
+
+  {
     path: '/login',
     name: 'login',
     component: () => import('../views/Login.vue'),
