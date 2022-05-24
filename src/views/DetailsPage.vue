@@ -21,7 +21,7 @@
         </div>
 
         <div class="mt-5">
-          <img :src="item.url" alt="">
+          <img :src="item.url" :alt="'image ' + item.id">
         </div>
 
         <div class="mt-5 photo-description">

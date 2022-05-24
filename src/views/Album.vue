@@ -6,12 +6,12 @@
 
       <div class="page-section">
 
-        <div class="mt-5 photo-description">
+        <div v-if="album.items?.length" class="mt-5 photo-description">
           <h2 class="mt-2"> {{ album.name }} </h2>
           <h5 class="mt-2 grey">Date created: {{ formatDate }}</h5>
         </div>
 
-        <div class="mt-5 layout-list-photos">
+        <div v-if="album.items?.length" class="mt-5 layout-list-photos">
           <layout-item
 
               @mouseenter="mouseEntered(index)"
@@ -22,6 +22,10 @@
               :photo="item">
 
           </layout-item>
+        </div>
+
+        <div class="mt-5" v-else>
+          <h1>This album is currently empty</h1>
         </div>
 
         <div class="mt-5">
