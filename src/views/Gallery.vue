@@ -33,7 +33,7 @@ export default {
 
     return {
       photos: [],
-      loading: false
+      loading: false,
     }
   },
   methods: {
@@ -102,7 +102,9 @@ export default {
 
     window.onscroll = () => {
       if ((window.innerHeight + window.scrollY) >= document.body.offsetHeight) {
-        this.getPhotos();
+        if(!this.loading){
+          this.getPhotos();
+        }
       }
     };
   }
