@@ -14,7 +14,6 @@
 import {mapActions} from "vuex";
 import Modal from "@/components/Modal";
 import DeleteModal from "@/components/DeleteModal";
-
 export default {
   name: 'LayoutItem',
   components: {
