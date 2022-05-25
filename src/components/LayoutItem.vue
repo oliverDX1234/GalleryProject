@@ -1,12 +1,13 @@
 <template>
-  <div class="relative img-wrapper"
-       >
+  <div class="relative img-wrapper">
     <img @click="showDetailedPage" class="pointer" :src="photo.url" alt="">
     <button class="add-to-album" @click="showModal" v-if="$route.name === 'gallery' && visible">ADD TO ALBUM</button>
     <button class="add-to-album" @click="showModal" v-if="$route.name !== 'gallery' && visible">DELETE ITEM</button>
 
-    <modal v-if="$route.name === 'gallery'" @close="modalIsVisible = false" :visible="modalIsVisible" :item="photo"></modal>
-    <delete-modal v-if="$route.name !== 'gallery'" @close="modalIsVisible = false" :visible="modalIsVisible" :item="photo"></delete-modal>
+    <modal v-if="$route.name === 'gallery'" @close="modalIsVisible = false" :visible="modalIsVisible"
+           :item="photo"></modal>
+    <delete-modal v-if="$route.name !== 'gallery'" @close="modalIsVisible = false" :visible="modalIsVisible"
+                  :item="photo"></delete-modal>
   </div>
 </template>
 <script>
@@ -16,17 +17,17 @@ import DeleteModal from "@/components/DeleteModal";
 
 export default {
   name: 'LayoutItem',
-  components:{
+  components: {
     Modal,
     DeleteModal
   },
-  data(){
+  data() {
     return {
       visible: false,
       modalIsVisible: false
     }
   },
-  props:{
+  props: {
     photo: {
       type: Object,
       required: true
@@ -36,15 +37,15 @@ export default {
       required: false
     }
   },
-  methods:{
+  methods: {
     ...mapActions("gallery", {setNewItem: "setNewItem"}),
 
-    showDetailedPage(){
+    showDetailedPage() {
       this.setNewItem({...this.photo, upload_date: new Date(), id: this.index});
 
       this.$router.push("/details-page/" + this.index);
     },
-    showModal(){
+    showModal() {
       this.modalIsVisible = true;
     }
   }

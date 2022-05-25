@@ -11,8 +11,8 @@
 
 <script>
 export default {
-  name: "AlertPage",
-  props:{
+  name: "AlertNotification",
+  props: {
 
     show: {
       default: false
