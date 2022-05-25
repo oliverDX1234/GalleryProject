@@ -27,9 +27,11 @@
           </div>
 
           <div v-if="errorMsg" class="validation mt-5">{{ errorMsg }}</div>
-          <div class="flex justify-content-center">
-            <div class="mt-5">
-              <button @click="$emit('close')" class="button-line min-width-150">CANCEL</button>
+          <div class="flex justify-content-center mt-5">
+            <div>
+              <button @click="$emit('close')" class="button-line min-width-150-large-window">CANCEL</button>
+            </div>
+            <div>
               <button @click="saveAlbum" class="ml-5 min-width-150">SAVE</button>
             </div>
           </div>

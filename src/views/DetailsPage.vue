@@ -6,7 +6,7 @@
 
       <div class="page-section">
 
-        <div class="flex justify-content-center">
+        <div class="flex justify-content-center mr-5 ml-5">
 
           <button @click="modalIsVisible = true" class="button-line">ADD TO ALBUM</button>
 
@@ -21,7 +21,7 @@
         </div>
 
         <div class="mt-5">
-          <img :src="item.url" :alt="'image ' + item.id">
+          <img class="details-photo" :src="item.url" :alt="'image ' + item.id">
         </div>
 
         <div class="mt-5 photo-description">

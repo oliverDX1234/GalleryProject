@@ -1,5 +1,5 @@
 <template>
-  <div class="relative"
+  <div class="relative img-wrapper"
        >
     <img @click="showDetailedPage" class="pointer" :src="photo.url" alt="">
     <button class="add-to-album" @click="showModal" v-if="$route.name === 'gallery' && visible">ADD TO ALBUM</button>
