@@ -3,15 +3,6 @@ import store from "../store"
 
 const routes = [
   {
-    path: '/',
-    name: 'homepage',
-    component: () => import('../views/Gallery.vue'),
-    meta:{
-
-      auth: true
-    }
-  },
-  {
     path: '/gallery',
     name: 'gallery',
     component: () => import('../views/Gallery.vue'),
@@ -64,6 +55,13 @@ router.beforeEach((to, _ ,next) => {
   }else if(!to.meta.auth && store.getters['authentication/isAuthenticated']){
     next('/gallery')
   }else{
+    if(to.path === "/"){
+      if(!store.getters['authentication/isAuthenticated']){
+        next("/login")
+      }else{
+        next("/gallery");
+      }
+    }
     next();
   }
 
