@@ -22,12 +22,12 @@
         <button>LOG IN</button>
 
         <p class="validation mt-3" v-show="errorMsg">The provided credentials are incorrect. Please try again</p>
-
-        <div class="footer-section">
-          <img src="../assets/images/login.svg" alt="login-image">
-        </div>
       </form>
     </div>
+  </div>
+
+  <div class="footer-section">
+    <img src="../assets/images/login.svg" alt="login-image">
   </div>
 </template>
 
