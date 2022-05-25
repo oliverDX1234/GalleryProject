@@ -31,19 +31,15 @@ export default {
     photo: {
       type: Object,
       required: true
-    },
-    index: {
-      type: Number,
-      required: false
     }
   },
   methods: {
     ...mapActions("gallery", {setNewItem: "setNewItem"}),
 
     showDetailedPage() {
-      this.setNewItem({...this.photo, upload_date: new Date(), id: this.index});
+      this.setNewItem({...this.photo, upload_date: new Date(), id: this.photo.id});
 
-      this.$router.push("/details-page/" + this.index);
+      this.$router.push("/details-page/" + this.photo.id);
     },
     showModal() {
       this.modalIsVisible = true;

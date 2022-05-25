@@ -45,7 +45,8 @@ export default {
         this.photos.push({
           author: x.author,
           download_url: x.download_url,
-          url: baseurl
+          url: baseurl,
+          id: (new Date()).getTime()
         });
 
         if (idx === array.length - 1) {

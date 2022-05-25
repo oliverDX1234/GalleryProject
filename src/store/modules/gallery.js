@@ -73,7 +73,7 @@ export default {
 
         DELETE_ITEM(state, payload){
             let index = state.albums.findIndex(x => x.id === Number(payload.in));
-
+            console.log(payload.item, payload.in);
             if(index !== -1){
                 let itemIndex = state.albums[index].items.findIndex( item => item.id === payload.item.id)
 
