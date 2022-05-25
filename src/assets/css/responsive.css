@@ -25,10 +25,12 @@
 
 
 @media( max-width: 575px ){
-    .login-page .footer-section{
+
+
+    .footer-section{
         height: 100px;
     }
-    .login-page .footer-section img{
+    .footer-section img{
         width: 200px;
     }
     .page-container{
