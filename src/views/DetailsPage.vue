@@ -102,7 +102,7 @@ export default {
           canvas.height = iSizeHeight;
           let ctx = canvas.getContext('2d');
           ctx.drawImage(img, 0, 0, iSizeWidth, iSizeHeight);
-          resolve(canvas.toDataURL('image/jpeg', 0.7))
+          resolve(canvas.toDataURL('image/jpeg'))
         }
       });
     },
